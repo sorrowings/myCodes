@@ -1,0 +1,94 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+#bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(44, 44, 44);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+
+}
+
+canvas {
+    /* border: 1px solid #838383; */
+    position: relative;
+    top: -20px;
+    display: block;
+
+}
+
+
+#lizi {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+}
+
+li {
+    position: absolute;
+    top: 105%;
+    left: 0;
+    width: 4px;
+    height: 4px;
+    background-color: rgb(253, 253, 253);
+    border-radius: 50%;
+    filter: blur(2px);
+    list-style: none;
+
+    animation: animate linear infinite;
+
+}
+
+@keyframes animate {
+    0% {
+        top: 100%;
+
+    }
+
+    100% {
+        top: 0%;
+
+    }
+}
+
+#decrition {
+    position: relative;
+    width: 300px;
+    height: 5px;
+    border-radius: 50%;
+    filter: blur(1px);
+    background-color: rgb(49, 49, 49);
+    animation: animate2 3.5s linear infinite;
+}
+
+@keyframes animate2 {
+    0% {
+        background-color: rgb(49, 49, 49);
+
+    }
+
+    50% {
+        background-color: rgb(119, 119, 119);
+    }
+
+    100% {
+        background-color: rgb(49, 49, 49);
+
+    }
+}
