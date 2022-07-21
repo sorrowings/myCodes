@@ -44,9 +44,12 @@ let pullin = async function (p) {
 let musicIn = (p = []) => {
   let file = p[0];
   let reader = new FileReader();
-  reader.readAsDataURL(file);
+  // reader.readAsDataURL(file);
+  reader.readAsArrayBuffer(file);
   reader.onload = () => {
-    audio.src = reader.result;
+    let blob = reader.result;
+    audio.src = URL.createObjectURL(new Blob([blob]));
+    console.log(audio.src, URL.createObjectURL(new Blob([blob])));
   };
 };
 
@@ -125,7 +128,6 @@ pullInBtn.onclick = (e) => {
   music.onchange = () => {
     GC.clearSlides();
     pullin(music.files).then((value) => {
-      audio.src = value.audio;
       GC.pullInTrack(value);
     });
   };
@@ -152,7 +154,6 @@ pushOutBtn.onclick = (e) => {
 
   let trackFile = {
     slides: GC.getSlides(),
-    audio: audio.src,
   };
   pushout(trackFile);
 };
