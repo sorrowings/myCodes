@@ -305,7 +305,13 @@ button:hover {
   font-size: 0.9em;
   left: -80px;
 }
-
+.tips{
+  bottom: 300px;
+  width: 80px;
+  height: 45px;
+  font-size: 0.9em;
+  left: -80px;
+}
 #music {
   position: absolute;
   top: 0;
