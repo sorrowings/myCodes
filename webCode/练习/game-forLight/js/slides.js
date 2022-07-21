@@ -4,6 +4,7 @@ let context = canvas.getContext("2d");
 let grades = document.querySelector(".grades");
 // 滑块的类
 let grade = 0;
+let speed = 2;
 class wSlider {
   constructor(x, y) {
     Object.assign(this, {
@@ -13,7 +14,7 @@ class wSlider {
       x: x,
       y: y,
       color: "#FFFF00 ",
-      speed: 2, //下落速度
+      speed: speed, //下落速度
       timeToFall: 0, //下落时机
       isBreak: true,
       type: "w",
@@ -60,7 +61,7 @@ class eSlider {
       x: x,
       y: y,
       color: "#FFFF00 ",
-      speed: 2, //下落速度
+      speed: speed, //下落速度
       timeToFall: 0, //下落时机
       isBreak: true,
       type: "e",
@@ -107,7 +108,7 @@ class qSlider {
       x: x,
       y: y,
       color: "#FFFF00 ",
-      speed: 2, //下落速度
+      speed: speed, //下落速度
       timeToFall: 0, //下落时机
       isBreak: true,
       type: "q",
@@ -185,7 +186,7 @@ class rSlider {
       x: x,
       y: y,
       color: "#FFFF00 ",
-      speed: 2, //下落速度
+      speed: speed, //下落速度
       timeToFall: 0, //下落时机
       isBreak: true,
       type: "r",
@@ -237,7 +238,7 @@ class tSlider {
       x: x,
       y: y,
       color: "#FFFF00 ",
-      speed: 2, //下落速度
+      speed: speed, //下落速度
       timeToFall: 0, //下落时机
       isBreak: true,
       type: "t",

@@ -21,19 +21,21 @@ let createGameCanvas = function (config) {
 
   // 游戏初始状态
   let theTrack = {
-    slides: [], //滑块数组
+    slides: [], //滑块默认数组
     effects: [], //特效数组
     music: "", //音乐地址
     time: 0, //时间轴
-    slideType: "w",
+    slideType: "w", //滑块类型
     timer: {}, //定时器
     keybord: "", //键盘监听记录键盘事件
+    musicState: 0, //记录音乐是否播放
   };
   // 初始花
   function resetTimeAndMusic() {
     theTrack.time = 0;
     clearInterval(theTrack.timer);
     audio.load();
+    theTrack.musicState = 0;
     grades.innerHTML = 0;
   }
   // 初始化sildes
@@ -103,11 +105,15 @@ let createGameCanvas = function (config) {
   function pause_play(a) {
     if (a == 0) {
       audio.pause();
+      theTrack.musicState = 0;
       clearInterval(theTrack.timer);
     } else {
-      audio.pause();
       theTrack.timer = setInterval(() => {
         // 初始线向下
+        if (startLine.offsetTop >= 800 && theTrack.musicState == 0) {
+          audio.play();
+          theTrack.musicState = 1;
+        }
         if (startLine.offsetTop < ch) {
           startLine.style.top = startLine.offsetTop + 2 + "px";
         }
@@ -132,13 +138,16 @@ let createGameCanvas = function (config) {
       theTrack.slides[i].reset();
     }
 
-    audio.play();
     // 初始线
     startLine.style.top = -1 + "px";
     theTrack.timer = setInterval(() => {
       // 初始线向下
       if (startLine.offsetTop < ch) {
         startLine.style.top = startLine.offsetTop + 2 + "px";
+        if (startLine.offsetTop >= 800 && theTrack.musicState == 0) {
+          audio.play();
+          theTrack.musicState = 1;
+        }
       }
       theTrack.time += 1;
       context.clearRect(0, 0, cw, ch);
@@ -162,9 +171,9 @@ let createGameCanvas = function (config) {
     // 起始线复位
     startLine.style.top = -1 + "px";
     // 播放音频
-    audio.play();
+
     // 显示分数
-    grades.style.visibility='visible'
+    grades.style.visibility = "visible";
     // 开始定时器，扫描滑块数据
     theTrack.timer = setInterval(() => {
       // 水母中心
@@ -173,7 +182,12 @@ let createGameCanvas = function (config) {
 
       // 读取数据，并下落
       if (startLine.offsetTop < ch) {
+        // 速度可改
         startLine.style.top = startLine.offsetTop + 2 + "px";
+        if (startLine.offsetTop >= 800 && theTrack.musicState == 0) {
+          audio.play();
+          theTrack.musicState = 1;
+        }
       }
       theTrack.time += 1;
       context.clearRect(0, 0, cw, ch);
