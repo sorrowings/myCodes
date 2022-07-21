@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <!-- 背景 -->
+    <canvas class="background"></canvas>
+
+    <div id="gameContainer">
+      <!-- 按钮层 -->
+      <div class="button">
+        <div id="typeStyle">==</div>
+        <button class="btn">编辑</button>
+        <button class="btn2">追 光</button>
+        <button class="pullInBtn">导入曲谱</button>
+        <button class="getAudio">导入音频</button>
+        <button class="pushOutBtn">导出曲谱</button>
+        <button class="outEdit">保存退出</button>
+        <!-- 文件选择器 -->
+        <input type="file" id="music" />
+      </div>
+      
+      <!-- 水母动画层-->
+      <div class="jellyfish">
+        <div class="control"></div>
+        <!-- 分数 -->
+        <div class="grades">0</div>
+        <div class="fishBody">
+          <p id="p1">++</p>
+          <p id="p2">++</p>
+        </div>
+        <div class="lineEff"></div>
+        <div class="line"></div>
+      </div>
+
+      <!-- 动画层 -->
+      <div class="startLine"></div>
+      <canvas id="gameBox"></canvas>
+
+      <!-- 音乐 -->
+      <audio src="./asset/Florian Bur - The Way.mp3"></audio>
+    </div>
+    <script type="module" src="./index.js"></script>
+  </body>
+</html>
